@@ -19,27 +19,14 @@
             typo="headline4"
             tag="h2"
             class="text-left">I jump between the <span id="ux-universe" v-on:mouseover="activateUniverseState">UX Universe</span> to <span id="coding-cosmos" v-on:mouseover="activateCosmosState">Coding Cosmos</span> to create user centered digital experiences</mdc-text>
-          <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
-          <!--Mixing my educational background of cogitative psychology and art paired with my technical skill set -->
+          <mdc-layout-cell desktop=7 tablet=12 class="fvs--intro-box--action">
+            <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
+            <mdc-button @click="Contact" raised>Contact Me</mdc-button>
+          </mdc-layout-cell>
         </div>
         <script type="in/Login"></script>
       </mdc-layout-cell>
     </mdc-layout-grid>
-    <!--<mdc-layout-grid>-->
-
-      <!--<mdc-layout-cell desktop=6 tablet=6 >-->
-        <!--<img src="https://via.placeholder.com/550x650" alt="Valerie Sharp">-->
-      <!--</mdc-layout-cell>-->
-      <!--<mdc-layout-cell desktop=6 tablet=6 >-->
-        <!--<mdc-display>Valerie Sharp <mdc-text typo="body2" tag="small"> Artist / Technologist / Psychologist </mdc-text></mdc-display>-->
-        <!--&lt;!&ndash;<mdc-subheading>I'm a full stack developer that loves combining my passion of art, psychology, and technology to create user centered digital experiences.</mdc-subheading>&ndash;&gt;-->
-        <!--<mdc-headline>Full stack developer that loves creating user centered digital experiences.</mdc-headline>-->
-      <!--</mdc-layout-cell>-->
-      <!---->
-      <!--<mdc-layout-cell desktop=12 tablet=12 >-->
-
-      <!--</mdc-layout-cell>-->
-    <!--</mdc-layout-grid>-->
   </div>
 </template>
 
