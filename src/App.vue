@@ -2,7 +2,6 @@
   <div>
     <Nav></Nav>
     <div id="app">
-      <img src="@/assets/img/logo.svg">
       <router-view/>
     </div>
   </div>
@@ -21,7 +20,7 @@ export default {
 
 <style>
 #app {
-  text-align: center;
-  /*padding-top: 60px;*/
+   /*text-align: center;*/
+   /*padding-top: 60px;*/
 }
 </style>

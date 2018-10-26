@@ -1,0 +1,9 @@
+.mdc-top-app-bar--loading {
+  .mdc-top-app-bar {
+    border-bottom: 5px solid $mdc-theme-black;
+    background-color: $mdc-theme-black;
+  }
+  .mdc-top-bar__action-item-text {
+    color: #fff;
+  }
+}
