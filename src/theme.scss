@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin+Condensed|Ubuntu:700');
+
+$mdc-theme-primary: #F7B538; // Purple 500
+$mdc-theme-secondary: #BEE5BF; // Orange A200
+$mdc-theme-background: #FDFFFC; // White
+$text-color: #37371F;
+
+@import "vue-mdc-adapter/dist/styles";
+
+// FONTS
+body {
+  font-family: 'Cabin Condensed', sans-serif;
+  color: $text-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3,
+h4, h5, h6,
+.mdc-button,
+.mdc-typography--headline1,
+.mdc-typography--headline2,
+.mdc-typography--headline3,
+.mdc-typography--headline4,
+P.mdc-typography--headline5,
+.mdc-typography--headline5 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+
+}
+
+// BUTTON
+
+.mdc-button--raised:not(:disabled) {
+  background-color: $mdc-theme-secondary;
+  color: $text-color;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
