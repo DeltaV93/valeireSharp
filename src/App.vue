@@ -22,8 +22,10 @@
 export default {
     name: 'app',
     data () {
-      dialogText: 'Lorem ipsum dolor sit amet, ...',
-      open: false,
+      return {
+        dialogText: 'Lorem ipsum dolor sit amet, ...',
+        open: false
+      }
     },
     components: {
       Nav
@@ -35,7 +37,7 @@ export default {
       onDecline () {
         console.log('declined')
       }
-  }
+    }
 }
 </script>
 

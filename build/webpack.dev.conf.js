@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -57,6 +58,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    // TODO // fix manifest
+    // Create manifest
+    // new WebpackPwaManifest({
+    //   name: 'Finding Valerie Sharp',
+    //   short_name: 'FS',
+    //   description: 'My personal site to display my work, and find work.',
+    //   background_color: '#F7B538',
+    //   crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+    //   icons: [
+    //     {
+    //       src: path.resolve(__dirname, 'src/assets/img/logo.png'),
+    //       sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+    //     },
+    //     {
+    //       src: path.resolve(__dirname, 'src/assets/large-icon.png'),
+    //       size: '1024x1024' // you can also use the specifications pattern
+    //     }
+    //   ]
+    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

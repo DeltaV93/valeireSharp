@@ -1,0 +1,92 @@
+// HOME
+html {
+  height: 100%;
+}
+body {
+  background: #fff linear-gradient(to bottom, #ffffff, #ffffff, #ffffff);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  //background-color: lightblue;
+  @extend %transition--long;
+}
+
+body::before {
+  content: ' ';
+  background: linear-gradient(to bottom, #020100, #03001e, #001639, #1a1556, #6a5188, #a38eb3, #fdeff9);
+  position: fixed;
+  display: block;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1000;
+
+  @extend %transition--long;
+}
+#fvs--home {
+  h1 {
+    background: #fff;
+  }
+  .fvs--intro-box h2 {
+    background: #fff;
+    line-height: 1.5;
+  }
+  #coding-cosmos,
+  #ux-universe{
+    //font-size: 125%;
+    //text-decoration: underline;
+    //background: #fff;
+    position: relative;
+    @extend %transition;
+    //&:hover{
+    //  opacity: 0.7;
+    //  cursor: progress;
+    //}
+    &::after {
+      content: ' ';
+      position: absolute;
+      height: 5px;
+      width: 100%;
+      background-color: lightblue;
+      left: 0px;
+      top: 28px;
+      z-index: 0;
+    }
+  }
+  #coding-cosmos::before {
+    //color: $mdc-theme-blue;
+  }
+  #ux-universe{
+    //color: $mdc-theme-purple;
+  }
+}
+body.testing {
+  &::before{
+    opacity: 1;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background: linear-gradient(to bottom, #020100, #03001e, #001639, #1a1556, #6a5188, #a38eb3, #fdeff9);
+    //background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cbccc8)) fixed;
+    @extend %transition--long;
+  }
+
+  //background: linear-gradient(to bottom, #020100, #03001e, #001639, #1a1556, #6a5188, #a38eb3, #fdeff9);
+  //background-color: #fff;
+  //opacity: 1;
+  color: #fff;
+  #fvs--home {
+    h1, h2, h3, h4 {
+      background: transparent;
+    }
+  }
+  #fvs--my-process {
+
+  }
+}

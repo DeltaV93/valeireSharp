@@ -7,3 +7,19 @@
     color: #fff;
   }
 }
+
+.testing {
+  body::before {
+    opacity: 1;
+    background: lavender;
+    @extend %transition--long;
+  }
+
+  //background: linear-gradient(to bottom, #020100, #03001e, #001639, #1a1556, #6a5188, #a38eb3, #fdeff9);
+  //background-color: #fff;
+  //opacity: 1;
+  color: #fff;
+  h1, h2 {
+    background: transparent;
+  }
+}
