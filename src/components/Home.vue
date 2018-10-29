@@ -34,7 +34,7 @@
       <mdc-layout-grid>
         <mdc-layout-cell desktop=12 tablet=12>
           <h1 class="text-center">My Process</h1>
-          <h2>From gathering bossiness requirements to pushing to productions</h2>
+          <h2>From gathering business requirements to pushing to productions</h2>
         </mdc-layout-cell>
 
         <mdc-layout-cell desktop=12>
