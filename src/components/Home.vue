@@ -20,7 +20,7 @@
             <mdc-text
               typo="headline5"
               tag="h2"
-              class="text-left">I jump between the <span id="ux-universe" v-on:mouseover="activateUniverseState">UX Universe</span> to <span id="coding-cosmos" v-on:mouseover="activateCosmosState">Coding Cosmos</span> to create user centered digital experiences</mdc-text>
+              class="text-left">I jump between the <span id="ux-universe" v-on:mouseover="activateUniverseState">UX Universe</span> to <span id="coding-cosmos" v-on:mouseover="activateCosmosState">Coding Consolations</span> to create user centered digital experiences</mdc-text>
             <mdc-layout-cell desktop=7 tablet=12 class="fvs--intro-box--action">
               <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
               <mdc-button @click="Contact" outlined>Contact Me</mdc-button>
@@ -209,9 +209,9 @@
   }
   img {
     min-width: 80%;
+    max-width: 80%;
     height: auto;
     max-height: 850px;
-    max-width: 80%;
     left: -8vw;
     top: 10%;
     position: relative;
@@ -223,7 +223,13 @@
   .fvs--personal-img:before {
     content: "\00a0 ";
     position: absolute;
-    height: 75%;
+    /*min-height: 28%;*/
+    min-height: 55%;
+    min-width: 30%;
+    max-height: 95%;
+    max-width: 30%;
+    /*height: 38rem;*/
+    /*width: 25rem;*/
     width: 25rem;
     display: block;
     top: 124px;
@@ -241,5 +247,19 @@
   .fvs--intro-box h2 {
     /*background: #fff;*/
     line-height: 1.5;
+  }
+
+
+  /* TABLETBREAKPOINT */
+  @media only screen and (max-width: 959px){
+    .fvs--personal-img:before {
+      min-height: 51.5%;
+    }
+  }
+  /* MOBILE BREAKPOINT */
+  @media only screen and (max-width: 600px){
+    .fvs--personal-img:before {
+      min-height: 25%;
+    }
   }
 </style>
