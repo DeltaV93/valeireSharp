@@ -30,9 +30,16 @@ body::before {
 
   @extend %transition--long;
 }
+
 #fvs--home {
+  section {
+    margin-bottom: 100px;
+  }
   h1 {
     background: #fff;
+  }
+  .fvs--personal-img img {
+    animation: float 9s ease-in-out infinite;
   }
   .fvs--intro-box h2 {
     background: #fff;
@@ -40,21 +47,18 @@ body::before {
   }
   #coding-cosmos,
   #ux-universe{
-    //font-size: 125%;
-    //text-decoration: underline;
-    //background: #fff;
     position: relative;
     @extend %transition;
-    //&:hover{
-    //  opacity: 0.7;
-    //  cursor: progress;
-    //}
+    &:hover{
+      opacity: 0.7;
+      cursor: progress;
+    }
     &::after {
       content: ' ';
       position: absolute;
       height: 5px;
       width: 100%;
-      background-color: lightblue;
+      background-color: $mdc-theme-primary;
       left: 0px;
       top: 28px;
       z-index: 0;

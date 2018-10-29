@@ -34,6 +34,7 @@
 <style scoped>
   #nav{
     padding-bottom: 100px;
+    z-index: 10000;
   }
   .mdc-top-app-bar__title svg{
     height: 50px;
@@ -42,7 +43,7 @@
   .mdc-top-app-bar {
     background-color: transparent;
     border-bottom: 2px solid black;
-    /*background-color: #fff;*/
+    background-color: #fff;
     /*background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,0,0,1));*/
   }
   .mdc-top-app-bar__action-item-text {

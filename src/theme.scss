@@ -13,6 +13,8 @@ $mdc-theme-black: #020100;
 $mdc-theme-black-1: #242423;
 $mdc-theme-black-2: #333533;
 
+@import "animations";
+
 @import "vue-mdc-adapter/dist/styles";
 @import "navbar";
 @import "home";
