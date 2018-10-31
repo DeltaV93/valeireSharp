@@ -12,7 +12,7 @@
                 @accept="onAccept"
                 @cancel="onDecline">
       <mdc-layout-grid class="contact--form">
-        <form width="100px" method="POST">
+        <form width='100px' id='myForm' action="https://formspree.io/valeriensharp93@gmail.com" method="post">
           <mdc-layout-cell desktop=12>
           <mdc-textfield
             required
@@ -37,7 +37,7 @@
 
 <script>
   import Nav from '@/components/Nav'
-  import axios from 'axios'
+  // import axios from 'axios'
 export default {
     name: 'app',
     data () {
@@ -58,18 +58,7 @@ export default {
         console.log(this.name)
         console.log(this.email)
         console.log(this.message)
-
-        axios.post('http://getform.org/f/c8e6c462-9334-4ef1-b894-36fc57322914', {
-          name: this.name,
-          email: this.email,
-          message: this.message
-        })
-          .then(function (response) {
-            console.log(response)
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
+        document.getElementById('myForm').submit()
       },
       onDecline () {
         console.log('declined')
