@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-const WebpackPwaManifest = require('webpack-pwa-manifest')
+// const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -24,6 +24,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
+    https: true,
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.join(config.dev.assetsPublicPath, 'index.html') },

@@ -2,16 +2,34 @@
   <div>
     <Nav></Nav>
     <div id="app">
-      <router-view/>
+      <router-view @contactMe="contactDialog"/>
     </div>
 
     <mdc-dialog v-model="open"
-                title="Title"
+                title="Please Leave A Message After The Beep."
                 accept="Accept"
                 cancel="Decline"
                 @accept="onAccept"
                 @cancel="onDecline">
-      {{ dialogText }}
+      <mdc-layout-grid class="contact--form">
+        <form width="100px" method="POST">
+          <mdc-layout-cell desktop=12>
+          <mdc-textfield
+            required
+            name="name"
+            type="text"
+            fullwidth
+            v-model="name"
+            label="Your Name"/>
+        </mdc-layout-cell>
+          <mdc-layout-cell desktop=12>
+            <mdc-textfield  reequired name="email" type="email"fullwidth v-model="email" label="Your Email"/>
+          </mdc-layout-cell>
+          <mdc-layout-cell desktop="12">
+            <mdc-textfield  required name="message" fullwidth v-model="message" label="Enter your message" multiline rows="8" cols="40" />
+          </mdc-layout-cell>
+        </form>
+      </mdc-layout-grid>
     </mdc-dialog>
   </div>
 
@@ -19,12 +37,16 @@
 
 <script>
   import Nav from '@/components/Nav'
+  import axios from 'axios'
 export default {
     name: 'app',
     data () {
       return {
         dialogText: 'Lorem ipsum dolor sit amet, ...',
-        open: false
+        open: false,
+        name: '',
+        email: '',
+        message: ''
       }
     },
     components: {
@@ -33,9 +55,30 @@ export default {
     methods: {
       onAccept () {
         console.log('accepted')
+        console.log(this.name)
+        console.log(this.email)
+        console.log(this.message)
+
+        axios.post('http://getform.org/f/c8e6c462-9334-4ef1-b894-36fc57322914', {
+          name: this.name,
+          email: this.email,
+          message: this.message
+        })
+          .then(function (response) {
+            console.log(response)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       },
       onDecline () {
         console.log('declined')
+      },
+      contactDialog () {
+        this.open = true
+        console.log('open')
+        console.log(this.open)
+        // return this.open = !this.open
       }
     }
 }
@@ -43,7 +86,17 @@ export default {
 
 <style>
 #app {
-   /*text-align: center;*/
-   /*padding-top: 60px;*/
+  /*text-align: center;*/
+  /*padding-top: 60px;*/
 }
+/*}*/
+/*max-width: 730px;*/
+/*min-width: 520px;*/
+  .contact--form textarea {
+      max-width: 730px;
+      min-width: 520px;
+  }
+  form {
+    width: 44vw;
+  }
 </style>

@@ -23,7 +23,7 @@
               class="text-left">I jump between the <span id="ux-universe" v-on:mouseover="activateUniverseState">UX Universe</span> to <span id="coding-cosmos" v-on:mouseover="activateCosmosState">Coding Consolations</span> to create user centered digital experiences</mdc-text>
             <mdc-layout-cell desktop=7 tablet=12 class="fvs--intro-box--action">
               <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
-              <mdc-button @click="Contact" outlined>Contact Me</mdc-button>
+              <mdc-button @click="contactModal" outlined>Contact Me</mdc-button>
             </mdc-layout-cell>
           </div>
           <script type="in/Login"></script>
@@ -74,89 +74,139 @@
     </section>
 
     <section>
+      <div class="projects">
       <mdc-layout-grid>
+
+
+
+
         <mdc-layout-cell desktop=12>
           <h1>Latest Projects</h1>
-        </mdc-layout-cell>
+          <div class="projects">
+            All Projects
+            <div class="project--container" v-for="(item, index) in latestProjects" :key="index">
+              <mdc-layout-grid :class="">
+                <mdc-layout-cell desktop=5>
+                  <div class="project__img">
 
-        <mdc-layout-cell desktop="12">
-          <mdc-grid-list with-support-text interactive>
-            <mdc-grid-tile ratio="16x9"
-                           v-for="(item, index) in latestProjects" :key="index"
-                           :src="item.src"
-                           :title="item.title"
-                           :support-text="item.desc"
-            >
-            </mdc-grid-tile>
-          </mdc-grid-list>
+                    <img v-bind:src=[item.src] class="img--responsive" v-bind:alt=[item.title]>
+                  </div>
+                </mdc-layout-cell>
+                <mdc-layout-cell desktop=1>
+                  <div class="project__info">
+                    <mdc-text
+                      typo="headline4"
+                      tag="h4"
+                      class="text-left project__info--title">{{item.title}}</mdc-text>
+                    <mdc-text
+                      typo="headline6"
+                      tag="p"
+                      class="text-left">{{item.desc}}</mdc-text>
+                  </div>
+                </mdc-layout-cell>
+              </mdc-layout-grid>
+            </div>
+          </div>
+          <!--&lt;!&ndash;<mdc-layout-cell desktop=5 v-for="(item, index) in latestProjects" :key="index">&ndash;&gt;-->
+
+            <!--<div class="project&#45;&#45;container"  v-for="(item, index) in latestProjects" :key="index">-->
+              <!--&lt;!&ndash;<mdc-layout-cell desktop=5 style="background-color:lightblue;">&ndash;&gt;-->
+              <!--<div class="project&#45;&#45;img">-->
+                <!--<img src="https://via.placeholder.com/100x100" class="img&#45;&#45;responsive" v-bind:alt=[item.title]>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
+              <!--&lt;!&ndash;<mdc-layout-cell desktop=6 style="background-color:lightseagreen;">&ndash;&gt;-->
+              <!--<div class="project&#45;&#45;info">-->
+                <!--<mdc-text-->
+                  <!--typo="headline4"-->
+                  <!--tag="h4"-->
+                  <!--class="text-left">{{item.title}}</mdc-text>-->
+                <!--<mdc-text-->
+                  <!--typo="headline6"-->
+                  <!--tag="p"-->
+                  <!--class="text-left">{{item.desc}}</mdc-text>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
+            <!--</div>-->
+
+          <!--</mdc-layout-cell>-->
+        <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
         </mdc-layout-cell>
         <mdc-layout-cell desktop=12>
           <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
         </mdc-layout-cell>
       </mdc-layout-grid>
+      </div>
     </section>
 
   </div>
 </template>
 
 <script>
+  /* eslint-disable quotes */
+
   export default {
     name: 'Home',
+    props: ['contactDialog'],
+    // props: {
+    //   open: Boolean
+    // },
     data: function () {
       return {
+        contactMe: false,
         currentRole: 'Frontend Developer',
         process: [
           {
-            src: 'image1.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Research',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Wire frames / Mockup\'s',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Testing',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Technical Architecture',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Build',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Refine & Review',
             desc: 'lore ipsum'
           }
         ],
         latestProjects: [
           {
-            src: 'image1.jpg',
+            src: 'https://via.placeholder.com/100x50',
             title: 'Street Salad',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x50',
             title: 'Estify Pro',
             desc: 'lore ipsum'
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x50',
             title: 'Digital Black Hippy',
             desc: 'lore ipsum'
           }
         ],
         toolBox: [
           {
-            src: 'image1.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Development',
             desc: 'lore ipsum',
             skills: {
@@ -165,7 +215,7 @@
             }
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'User Experiences',
             desc: 'lore ipsum',
             skills: {
@@ -174,7 +224,7 @@
             }
           },
           {
-            src: 'image2.jpg',
+            src: 'https://via.placeholder.com/100x100',
             title: 'Soft Skills',
             desc: 'lore ipsum',
             skills: ['Communication', 'Public Speaking', 'Teaching', 'Mentoring']
@@ -192,8 +242,19 @@
       },
       activateCosmosState: function () {
 
+      },
+      contactModal: function () {
+        // console.log()
+        // this.contactDialog()
+        this.$emit('contactMe')
+        // console.log('call me. beep me.')
       }
     }
+    // updated: function () {
+    //   // console.log(this.open)
+    //   // console.log(this)
+    //   console.log(this.contactMe)
+    // }
   }
 </script>
 
@@ -207,7 +268,7 @@
     align-items: center;
     justify-content: center;
   }
-  img {
+  .fvs--personal-img img {
     min-width: 80%;
     max-width: 80%;
     height: auto;
