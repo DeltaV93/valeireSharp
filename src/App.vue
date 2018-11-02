@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Nav></Nav>
+    <Nav @contactMe="contactDialog"></Nav>
     <div id="app">
       <router-view @contactMe="contactDialog"/>
     </div>
 
-    <mdc-dialog v-model="open"
+    <mdc-dialog  v-model="open"
                 title="Please Leave A Message After The Beep."
                 accept="Accept"
                 cancel="Decline"
-                @accept="onAccept"
+                @validate="onAccept"
                 @cancel="onDecline">
       <mdc-layout-grid class="contact--form">
-        <form width='100px' id='myForm' accept-charset='UTF-8'  enctype='multipart/form-data' action="https://usebasin.com/f/fff111722b3d" method="post">
+        <form v-if='contactResponseMsg === "sendMessage"' width='100px' id='myForm' accept-charset='UTF-8' >
           <mdc-layout-cell desktop=12>
           <mdc-textfield
             required
@@ -29,6 +29,9 @@
             <mdc-textfield  required name="message" fullwidth v-model="message" label="Enter your message" multiline rows="8" cols="40" />
           </mdc-layout-cell>
         </form>
+        <div v-if='contactResponseMsg === "thankYouMessage"'>
+
+        </div>
       </mdc-layout-grid>
     </mdc-dialog>
   </div>
@@ -37,7 +40,7 @@
 
 <script>
   import Nav from '@/components/Nav'
-  // import axios from 'axios'
+  import axios from 'axios'
 export default {
     name: 'app',
     data () {
@@ -46,19 +49,37 @@ export default {
         open: false,
         name: '',
         email: '',
-        message: ''
+        message: '',
+        contactResponseMsg: 'sendMessage'
       }
     },
     components: {
       Nav
     },
     methods: {
-      onAccept () {
+      onAccept (e) {
         console.log('accepted')
         console.log(this.name)
         console.log(this.email)
         console.log(this.message)
-        document.getElementById('myForm').submit()
+
+        axios.post('https://api.formbucket.com/f/buk_OikQqv7vThABOKEP9WyH7dQl', {
+          name: this.name,
+          email: this.email,
+          message: this.message
+        })
+          .then(function (response) {
+            let data = response.data
+            if (data.id) {
+              console.log(response)
+            } else {
+              alert('message did not send')
+            }
+
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       },
       onDecline () {
         console.log('declined')

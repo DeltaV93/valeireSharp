@@ -1,10 +1,10 @@
 <template>
   <div id="nav">
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <header class="mdc-top-app-bar ">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <!--ONLY SHOW ON MOBILE-->
-          <!--<a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>-->
+          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
           <span class="mdc-top-app-bar__title">
             <Logo></Logo>
           </span>
@@ -13,7 +13,7 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <a href="#" class="mdc-top-app-bar__action-item mdc-top-app-bar__action-item-text" aria-label="Work" alt="Work">Work</a>
           <a href="#" class="mdc-top-app-bar__action-item mdc-top-app-bar__action-item-text" aria-label="About Valerie Sharp" alt="About Valerie Sharp">About</a>
-          <a href="#" class="mdc-top-app-bar__action-item mdc-top-app-bar__action-item-text" aria-label="Contact Valerie Sharp" alt="Contact Valerie Sharp">Contact Me</a>
+          <a href="#" class="mdc-top-app-bar__action-item mdc-top-app-bar__action-item-text" aria-label="Contact Valerie Sharp" alt="Contact Valerie Sharp" @click="contactModal">Contact Me</a>
         </section>
       </div>
     </header>
@@ -27,6 +27,11 @@
     name: 'Nav',
     components: {
       Logo
+    },
+    methods: {
+      contactModal: function () {
+        this.$emit('contactMe')
+      }
     }
   }
 </script>
