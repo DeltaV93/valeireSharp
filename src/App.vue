@@ -12,16 +12,16 @@
                 @validate="onAccept"
                 @cancel="onDecline">
       <mdc-layout-grid class="contact--form">
-        <form v-if='contactResponseMsg === "sendMessage"' width='100px' id='myForm' accept-charset='UTF-8' >
+        <form width='100px' ref='form--contact' id='form--contact' accept-charset='UTF-8' >
           <mdc-layout-cell desktop=12>
-          <mdc-textfield
-            required
-            name="name"
-            type="text"
-            fullwidth
-            v-model="name"
-            label="Your Name"/>
-        </mdc-layout-cell>
+            <mdc-textfield
+              required
+              name="name"
+              type="text"
+              fullwidth
+              v-model="name"
+              label="Your Name"/>
+          </mdc-layout-cell>
           <mdc-layout-cell desktop=12>
             <mdc-textfield  reequired name="email" type="email"fullwidth v-model="email" label="Your Email"/>
           </mdc-layout-cell>
@@ -29,9 +29,14 @@
             <mdc-textfield  required name="message" fullwidth v-model="message" label="Enter your message" multiline rows="8" cols="40" />
           </mdc-layout-cell>
         </form>
-        <div v-if='contactResponseMsg === "thankYouMessage"'>
+        <!--<component-->
+          <!--:formName='name'-->
+          <!--:formEmail='email'-->
+          <!--:formMessage='message'-->
+          <!--v-bind:is="contactMsgComponent"-->
+          <!--class="tab"-->
+        <!--&gt;</component>-->
 
-        </div>
       </mdc-layout-grid>
     </mdc-dialog>
   </div>
@@ -40,7 +45,12 @@
 
 <script>
   import Nav from '@/components/Nav'
+  import DialogContactForm from '@/components/DialogContactForm'
+  import DialogContactSuccess from '@/components/DialogContactSuccess'
+  import DialogContactError from '@/components/DialogContactError'
+
   import axios from 'axios'
+  const self = this
 export default {
     name: 'app',
     data () {
@@ -50,19 +60,26 @@ export default {
         name: '',
         email: '',
         message: '',
-        contactResponseMsg: 'sendMessage'
+        contactMsgComponent: 'DialogContactForm'
       }
     },
     components: {
-      Nav
+      Nav,
+      DialogContactForm,
+      DialogContactSuccess,
+      DialogContactError
+
     },
     methods: {
-      onAccept (e) {
-        console.log('accepted')
-        console.log(this.name)
-        console.log(this.email)
-        console.log(this.message)
+      onAccept () {
 
+        let dialogHeader = document.getElementsByClassName('mdc-dialog__header__title')[0],
+            dialogBody = document.getElementsByClassName('mdc-dialog__body')[0],
+            dialogForm = document.getElementById('form--contact'),
+            dialogAcceptBtn = document.getElementsByClassName('mdc-dialog__footer__button--accept')[0],
+            dialogThankYouBodyMsg = '<div class="mdc-layout-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-desktop">\n' +
+              '<h3> Please give me 24 hours to come up with a thoughtful response</h3>\n' +
+              '</div>'
         axios.post('https://api.formbucket.com/f/buk_OikQqv7vThABOKEP9WyH7dQl', {
           name: this.name,
           email: this.email,
@@ -71,11 +88,13 @@ export default {
           .then(function (response) {
             let data = response.data
             if (data.id) {
-              console.log(response)
+              console.log('message sent')
+              dialogHeader.innerText = 'Your Message was sent!'
+              dialogBody.innerHTML = dialogThankYouBodyMsg
+              dialogAcceptBtn.style.visibility = 'hidden'
             } else {
-              alert('message did not send')
+              self.contactResponseMsg = 'DialogContactError'
             }
-
           })
           .catch(function (error) {
             console.log(error)
@@ -86,6 +105,7 @@ export default {
       },
       contactDialog () {
         this.open = true
+        self.contactResponseMsg = 'sendMessage'
         console.log('open')
         console.log(this.open)
         // return this.open = !this.open
