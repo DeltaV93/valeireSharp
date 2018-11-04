@@ -14,6 +14,7 @@ body {
   @extend %transition--long;
 }
 
+
 body::before {
   content: ' ';
   background: linear-gradient(to bottom, #020100, #03001e, #001639, #1a1556, #6a5188, #a38eb3, #fdeff9);
@@ -27,7 +28,6 @@ body::before {
   bottom: 0;
   opacity: 0;
   z-index: -1000;
-
   @extend %transition--long;
 }
 
@@ -71,7 +71,7 @@ body::before {
     //color: $mdc-theme-purple;
   }
 }
-body.testing {
+body.body--ux-universe {
   &::before{
     opacity: 1;
     -webkit-background-size: cover;
@@ -98,4 +98,36 @@ body.testing {
 .img--responsive {
   min-width: 100%;
   height: auto;
+}
+
+.projects:before {
+
+  //&:nth-child(odd) {
+  position: relative;
+  top: 0;
+  width: 100%;
+    background-color: #37371F;
+    color: #fff;
+    -webkit-transform: skew(0deg, 5deg);
+    -moz-transform: skew(0deg, 5deg);
+    -ms-transform: skew(0deg, 5deg);
+    -o-transform: skew(0deg, 5deg);
+    transform: skew(0deg, 5deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: initial;
+  //}
+  ////&:nth-child(even){
+  //  background-color: #00bcd4;
+  //  //transform: skew(0deg, -5deg);
+  //  -webkit-transform: skew(0deg, -5deg);
+  //  -moz-transform: skew(0deg, -5deg);
+  //  -ms-transform: skew(0deg, -5deg);
+  //  -o-transform: skew(0deg, -5deg);
+  //  transform: skew(0deg, -5deg);
+  //  -webkit-backface-visibility: hidden;
+  //  backface-visibility: initial;
+  ////}
+  //.project--container {
+  //  background-color: #fff;
+  //}
 }

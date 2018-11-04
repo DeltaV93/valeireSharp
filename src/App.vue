@@ -68,18 +68,14 @@ export default {
       DialogContactForm,
       DialogContactSuccess,
       DialogContactError
-
     },
     methods: {
       onAccept () {
+        let dialogHeader = document.getElementsByClassName('mdc-dialog__header__title')[0]
+        let dialogBody = document.getElementsByClassName('mdc-dialog__body')[0]
+        let dialogAcceptBtn = document.getElementsByClassName('mdc-dialog__footer__button--accept')[0]
+        let dialogThankYouBodyMsg = '<div class="mdc-layout-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-desktop"><h3> Please give me 24 hours to come up with a thoughtful response</h3></div>'
 
-        let dialogHeader = document.getElementsByClassName('mdc-dialog__header__title')[0],
-            dialogBody = document.getElementsByClassName('mdc-dialog__body')[0],
-            dialogForm = document.getElementById('form--contact'),
-            dialogAcceptBtn = document.getElementsByClassName('mdc-dialog__footer__button--accept')[0],
-            dialogThankYouBodyMsg = '<div class="mdc-layout-cell mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-desktop">\n' +
-              '<h3> Please give me 24 hours to come up with a thoughtful response</h3>\n' +
-              '</div>'
         axios.post('https://api.formbucket.com/f/buk_OikQqv7vThABOKEP9WyH7dQl', {
           name: this.name,
           email: this.email,

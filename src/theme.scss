@@ -16,8 +16,9 @@ $mdc-theme-black-2: #333533;
 @import "animations";
 
 @import "vue-mdc-adapter/dist/styles";
-@import "navbar";
 @import "home";
+@import "navbar";
+//@import "stars";
 
 // mixin or utils
 %transition {

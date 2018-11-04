@@ -1,17 +1,34 @@
-.mdc-top-app-bar--loading {
-  .mdc-top-app-bar {
-    border-bottom: 5px solid $mdc-theme-black;
-    background-color: $mdc-theme-black;
+.mdc-top-app-bar {
+  box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+  background-color: #fff;
+  @extend %transition--long;
+  #valerieSharp--logo {
+    @extend %transition--long;
   }
-  .mdc-top-bar__action-item-text {
+}
+.body--ux-universe .mdc-top-app-bar {
+  background-color: #030117;
+  //box-shadow: 0 1px 0 rgba(255,255,255,0.1), 0 1px 6px rgba(266,255,255,0.1);
+  //background-color: transparent;
+  a {
     color: #fff;
+  }
+  #valerieSharp--logo {
+    #triangle {
+      stroke: #ffffff;
+    }
+    #s--outline {
+      fill: #ffffff;
+    }
+    #v--outline__right {
+      fill: $mdc-theme-primary;
+    }
   }
 }
 
-.testing {
-  body::before {
+.body--ux-universe {
+  &::before {
     opacity: 1;
-    background: lavender;
     @extend %transition--long;
   }
 
@@ -19,7 +36,9 @@
   //background-color: #fff;
   //opacity: 1;
   color: #fff;
-  h1, h2 {
+  h1, h2, .mdc-typo, .mdc-text {
     background: transparent;
   }
+
+
 }

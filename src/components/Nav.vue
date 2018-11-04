@@ -4,7 +4,7 @@
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <!--ONLY SHOW ON MOBILE-->
-          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <!--<a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>-->
           <span class="mdc-top-app-bar__title">
             <Logo></Logo>
           </span>
@@ -41,19 +41,30 @@
     padding-bottom: 100px;
     z-index: 10000;
   }
-  .mdc-top-app-bar__title svg{
+  header {
+    z-index: 1;
+  }
+  .mdc-top-app-bar__title {
+    width: 50px;
     height: 50px;
+  }
+  .mdc-top-app-bar__title svg{
+    /*height: 50px;*/
+    height: auto;
+    width: 100%;
     padding-top: 10px;
   }
-  .mdc-top-app-bar {
-    background-color: transparent;
-    border-bottom: 2px solid black;
-    background-color: #fff;
-    /*background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,0,0,1));*/
-  }
+
   .mdc-top-app-bar__action-item-text {
     width: 110px;
     font-size: 20px;
   }
+  .testing .mdc-top-app-bar{
+
+  }
+  /*.testing .mdc-top-app-bar a{*/
+    /*background-color: transparent;*/
+    /*color: #fff;*/
+  /*}*/
 
 </style>

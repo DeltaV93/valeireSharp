@@ -3,7 +3,7 @@
     <section class="fvs--intro-box">
       <mdc-layout-grid>
         <mdc-layout-cell desktop=1 tablet=12 >
-          <!--<flowers></flowers>-->
+          <Stars></Stars>
         </mdc-layout-cell>
         <mdc-layout-cell desktop=4 tablet=12 >
           <div class="fvs--personal-img">
@@ -74,12 +74,13 @@
     </section>
 
     <section>
+      <svg id="div--waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 1920 222" version="1.1">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <path d="M0,123.11773 C174.342354,174.442004 339.457535,200.104141 495.345541,200.104141 C1011.63072,200.104141 1279.00221,3.41060513e-13 1551.62147,3.41060513e-13 C1706.04155,3.41060513e-13 1828.8344,30.5786532 1920,91.7359595 L1920,221.172026 L0,221.664068 L0,123.11773 Z" id="Rectangle" fill="#ffffff"/>
+        </g>
+      </svg>
       <div class="projects">
       <mdc-layout-grid>
-
-
-
-
         <mdc-layout-cell desktop=12>
           <h1>Latest Projects</h1>
           <div class="projects">
@@ -107,30 +108,6 @@
               </mdc-layout-grid>
             </div>
           </div>
-          <!--&lt;!&ndash;<mdc-layout-cell desktop=5 v-for="(item, index) in latestProjects" :key="index">&ndash;&gt;-->
-
-            <!--<div class="project&#45;&#45;container"  v-for="(item, index) in latestProjects" :key="index">-->
-              <!--&lt;!&ndash;<mdc-layout-cell desktop=5 style="background-color:lightblue;">&ndash;&gt;-->
-              <!--<div class="project&#45;&#45;img">-->
-                <!--<img src="https://via.placeholder.com/100x100" class="img&#45;&#45;responsive" v-bind:alt=[item.title]>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
-              <!--&lt;!&ndash;<mdc-layout-cell desktop=6 style="background-color:lightseagreen;">&ndash;&gt;-->
-              <!--<div class="project&#45;&#45;info">-->
-                <!--<mdc-text-->
-                  <!--typo="headline4"-->
-                  <!--tag="h4"-->
-                  <!--class="text-left">{{item.title}}</mdc-text>-->
-                <!--<mdc-text-->
-                  <!--typo="headline6"-->
-                  <!--tag="p"-->
-                  <!--class="text-left">{{item.desc}}</mdc-text>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
-            <!--</div>-->
-
-          <!--</mdc-layout-cell>-->
-        <!--&lt;!&ndash;</mdc-layout-cell>&ndash;&gt;-->
         </mdc-layout-cell>
         <mdc-layout-cell desktop=12>
           <mdc-button @click="$router.push('/work')" raised>View Work</mdc-button>
@@ -143,7 +120,7 @@
 </template>
 
 <script>
-  /* eslint-disable quotes */
+  import Stars from '@/components/Stars'
 
   export default {
     name: 'Home',
@@ -237,7 +214,7 @@
         // let $heroSection = this.$refs.hero
         let $body = document.body
         // let $navBar = document.getElementsByClassName('mdc-top-app-bar')
-        $body.classList.add('testing')
+        $body.classList.add('body--ux-universe')
         // $navBar.classList.add('mdc-top-app-bar--loading')
       },
       activateCosmosState: function () {
@@ -249,12 +226,10 @@
         this.$emit('contactMe')
         // console.log('call me. beep me.')
       }
+    },
+    components: {
+      Stars
     }
-    // updated: function () {
-    //   // console.log(this.open)
-    //   // console.log(this)
-    //   console.log(this.contactMe)
-    // }
   }
 </script>
 
@@ -310,6 +285,21 @@
     line-height: 1.5;
   }
 
+  #div--waves {
+    width: 100%;
+    height: 100%;
+  }
+  .projects {
+    background: #fff;
+    position: relative;
+    top: -5px;
+    color: black;
+    /*transform: skewY(-2deg);*/
+  }
+  .project--container {
+    transform: skewY(-2deg);
+    background-color: lightblue;
+  }
 
   /* TABLETBREAKPOINT */
   @media only screen and (max-width: 959px){
