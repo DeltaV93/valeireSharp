@@ -36,19 +36,13 @@
           <h1 class="text-center">My Process</h1>
           <h2>From gathering business requirements to pushing to productions</h2>
         </mdc-layout-cell>
-
-        <mdc-layout-cell desktop=12>
-          <mdc-grid-list with-support-text interactive>
-            <mdc-grid-tile ratio="16x9"
-                           v-for="(item, index) in process" :key="index"
-                           :src="item.src"
-                           :title="item.title"
-                           :support-text="item.desc"
-            >
-            </mdc-grid-tile>
-          </mdc-grid-list>
-        </mdc-layout-cell>
-
+            <mdc-layout-cell desktop=2 v-for="(item, index) in process" :key="index">
+              <div class="process">
+                <img :src='"/static/icons/"+item.src'>
+                <p>{{item.title}}</p>
+                <p>{{item.desc}}</p>
+              </div>
+            </mdc-layout-cell>
       </mdc-layout-grid>
     </section>
 
@@ -57,19 +51,24 @@
         <mdc-layout-cell desktop=12 tablet=12>
           <h1 class="text-center">My Tool Box</h1>
         </mdc-layout-cell>
+          <mdc-layout-cell desktop=4 v-for="(item, index) in toolBox" :key="index">
+            <img :src='"/static/icons/"+item.icon' alt="">
+            <p>{{item.title}}</p>
+            <ul>
+              <li v-for='(skill, key, index) in item.skills' :key='index'>
+                <div v-if="item.title === 'Soft Skills'" >{{skill}}</div>
+                <div v-else>
+                  <div>{{key}}</div>
+                  <div v-for="(item, index) in skill" :key="index">
 
-        <mdc-layout-cell desktop=12>
-          <mdc-grid-list with-support-text interactive>
-            <mdc-grid-tile ratio="16x9"
-                           v-for="(item, index) in toolBox" :key="index"
-                           :src="item.src"
-                           :title="item.title"
-                           :support-text="item.desc"
-            >
-            </mdc-grid-tile>
-          </mdc-grid-list>
-        </mdc-layout-cell>
-
+                    <ul>
+                      <li>{{item}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </mdc-layout-cell>
       </mdc-layout-grid>
     </section>
 
@@ -84,13 +83,11 @@
         <mdc-layout-cell desktop=12>
           <h1>Latest Projects</h1>
           <div class="projects">
-            All Projects
             <div class="project--container" v-for="(item, index) in latestProjects" :key="index">
               <mdc-layout-grid :class="">
                 <mdc-layout-cell desktop=5>
                   <div class="project__img">
-
-                    <img v-bind:src=[item.src] class="img--responsive" v-bind:alt=[item.title]>
+                    <img v-bind:src='"/static/img/"+item.src' class="img--responsive" v-bind:alt=[item.title]>
                   </div>
                 </mdc-layout-cell>
                 <mdc-layout-cell desktop=1>
@@ -125,53 +122,50 @@
   export default {
     name: 'Home',
     props: ['contactDialog'],
-    // props: {
-    //   open: Boolean
-    // },
     data: function () {
       return {
         contactMe: false,
         currentRole: 'Frontend Developer',
         process: [
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'Search.svg',
             title: 'Research',
-            desc: 'lore ipsum'
+            desc: 'Observe the current flows and through user testing & market research find the best strategy to reach business goals.'
           },
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'Structure.svg',
             title: 'Wire frames / Mockup\'s',
-            desc: 'lore ipsum'
+            desc: 'Create low fidelity prototypes as a way to create feedback loop'
           },
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'UXDevelopment.svg',
             title: 'Testing',
-            desc: 'lore ipsum'
+            desc: 'Using the prototypes I\'m able to test assumptions that allow me to iterate on user flows quickly'
           },
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'programmingSolutions.svg',
             title: 'Technical Architecture',
-            desc: 'lore ipsum'
+            desc: 'Whether I\'m building from the ground up or adding functionality I determine the best architecture for the project and selecting which standards to follow during development.'
           },
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'build.svg',
             title: 'Build',
-            desc: 'lore ipsum'
+            desc: 'Using the framework decided in the precarious step I start implementing the design, while staying flexible to any architectural changes I may need to make due to unforeseen elements.'
           },
           {
-            src: 'https://via.placeholder.com/100x100',
+            src: 'updates.svg',
             title: 'Refine & Review',
-            desc: 'lore ipsum'
+            desc: 'Continue to update and improve based on user feedback, web optimizing, and analytics.'
           }
         ],
         latestProjects: [
           {
-            src: 'https://via.placeholder.com/100x50',
+            src: 'street-salad-logo.png',
             title: 'Street Salad',
             desc: 'lore ipsum'
           },
           {
-            src: 'https://via.placeholder.com/100x50',
+            src: 'estify-logo.png',
             title: 'Estify Pro',
             desc: 'lore ipsum'
           },
@@ -184,17 +178,8 @@
         toolBox: [
           {
             src: 'https://via.placeholder.com/100x100',
-            title: 'Development',
-            desc: 'lore ipsum',
-            skills: {
-              'Front End': ['HTML/CSS', 'Sass', 'JavaScript/jQuery', 'Bootstrap', 'Vue', 'React'],
-              'Back End': ['PHP', 'Python', 'Java', 'SQL']
-            }
-          },
-          {
-            src: 'https://via.placeholder.com/100x100',
             title: 'User Experiences',
-            desc: 'lore ipsum',
+            icon: 'tools.svg',
             skills: {
               'Research': ['surveys', 'interviews', 'persona', 'usability', 'testing'],
               'Design': ['Sketch', 'Adobe XD', 'Figma', 'InVision', 'Wire Framing', 'Rapid Prototyping']
@@ -202,8 +187,17 @@
           },
           {
             src: 'https://via.placeholder.com/100x100',
+            title: 'Development',
+            icon: 'programCoding.svg',
+            skills: {
+              'Front End': ['HTML/CSS', 'Sass', 'JavaScript/jQuery', 'Bootstrap', 'Vue', 'React'],
+              'Back End': ['PHP', 'Python', 'Java', 'SQL']
+            }
+          },
+          {
+            src: 'https://via.placeholder.com/100x100',
             title: 'Soft Skills',
-            desc: 'lore ipsum',
+            icon: 'VectorIllustration.svg',
             skills: ['Communication', 'Public Speaking', 'Teaching', 'Mentoring']
           }
         ]
@@ -284,7 +278,14 @@
     /*background: #fff;*/
     line-height: 1.5;
   }
-
+  .process {
+    text-align: center;
+  }
+  .process img,
+  .fvs--my-tool-box img{
+    height: 100px;
+    width: 100px;
+  }
   #div--waves {
     width: 100%;
     height: 100%;
@@ -296,9 +297,9 @@
     color: black;
     /*transform: skewY(-2deg);*/
   }
-  .project--container {
-    transform: skewY(-2deg);
-    background-color: lightblue;
+  .project--container  img{
+    height: auto;
+    width: 100%;
   }
 
   /* TABLETBREAKPOINT */
